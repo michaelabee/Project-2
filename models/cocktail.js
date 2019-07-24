@@ -7,8 +7,6 @@ module.exports = function(sequelize, DataTypes) {
     ingrFour: DataTypes.STRING,
     text: DataTypes.STRING,
     description: DataTypes.TEXT
-  })
+  });
   return Cocktails;
 };
-
-
