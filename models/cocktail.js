@@ -5,8 +5,10 @@ module.exports = function(sequelize, DataTypes) {
     ingrTwo: DataTypes.STRING,
     ingrThree: DataTypes.STRING,
     ingrFour: DataTypes.STRING,
-    text: DataTypes.STRING,
-    description: DataTypes.TEXT
+    ingrFive: DataTypes.STRING,
+    ingrSix: DataTypes.STRING,
+    description: DataTypes.TEXT,
+    alcoholic: DataTypes.BOOLEAN
   });
   return Cocktails;
 };
