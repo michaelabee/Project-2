@@ -61,7 +61,7 @@ var refreshCocktails = function() {
     });
 
     $cocktailList.empty();
-    $cocktailList.append($examples);
+    $cocktailList.append($cocktail);
   });
 };
 
