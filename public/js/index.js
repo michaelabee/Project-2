@@ -1,47 +1,53 @@
 // Get references to page elements
-var $exampleText = $("#example-text");
-var $exampleDescription = $("#example-description");
+var $cocktailText = $("#cocktail-text");
+var $cocktailIngredient1 = $("#cocktail-ingredient1");
+var $cocktailIngredient2 = $("#cocktail-ingredient2");
+var $cocktailIngredient3 = $("#cocktail-ingredient3");
+var $cocktailIngredient4 = $("#cocktail-ingredient4");
+var $cocktailIngredient5 = $("#cocktail-ingredient5");
+var $cocktailIngredient6 = $("#cocktail-ingredient6")
 var $submitBtn = $("#submit");
-var $exampleList = $("#example-list");
+var $cocktailList = $("#cocktail-list");
 
 // The API object contains methods for each kind of request we'll make
 var API = {
-  saveExample: function(example) {
+  saveCocktail: function (example) {
     return $.ajax({
       headers: {
         "Content-Type": "application/json"
       },
       type: "POST",
-      url: "api/examples",
+      url: "api/cocktails",
       data: JSON.stringify(example)
     });
   },
-  getExamples: function() {
+  getCocktails: function () {
     return $.ajax({
-      url: "api/examples",
+      url: "api/cocktails",
       type: "GET"
     });
-  },
-  deleteExample: function(id) {
-    return $.ajax({
-      url: "api/examples/" + id,
-      type: "DELETE"
-    });
   }
+  //I COMMENTED OUT THE FUNCTION BELOW BECAUSE I DON'T THINK WE NEED TO LET USERS DELETE COCKTAILS
+  // deleteExample: function(id) {
+  //   return $.ajax({
+  //     url: "api/cocktails/" + id,
+  //     type: "DELETE"
+  //   });
+  // }
 };
 
 // refreshExamples gets new examples from the db and repopulates the list
-var refreshExamples = function() {
-  API.getExamples().then(function(data) {
-    var $examples = data.map(function(example) {
+var refreshCocktails = function () {
+  API.getCocktails().then(function (data) {
+    var $cocktail = data.map(function (cocktail) {
       var $a = $("<a>")
-        .text(example.text)
-        .attr("href", "/example/" + example.id);
+        .text(cocktail.text)
+        .attr("href", "/cocktail/" + cocktail.id);
 
       var $li = $("<li>")
         .attr({
           class: "list-group-item",
-          "data-id": example.id
+          "data-id": cocktail.id
         })
         .append($a);
 
@@ -54,46 +60,56 @@ var refreshExamples = function() {
       return $li;
     });
 
-    $exampleList.empty();
-    $exampleList.append($examples);
+    $cocktailList.empty();
+    $cocktailList.append($examples);
   });
 };
 
 // handleFormSubmit is called whenever we submit a new example
 // Save the new example to the db and refresh the list
-var handleFormSubmit = function(event) {
+var handleFormSubmit = function (event) {
   event.preventDefault();
 
-  var example = {
-    text: $exampleText.val().trim(),
-    description: $exampleDescription.val().trim()
+  var cocktail = {
+    text: $cocktailText.val(),
+    ingredient1: $cocktailIngredient1.val(),
+    ingredient2: $cocktailIngredient2.val(),
+    ingredient3: $cocktailIngredient3.val(),
+    ingredient4: $cocktailIngredient4.val(),
+    ingredient5: $cocktailIngredient5.val(),
+    ingredient6: $cocktailIngredient6.val()
   };
 
-  if (!(example.text && example.description)) {
-    alert("You must enter an example text and description!");
+  if (!(cocktail.text && cocktail.ingredient1)) {
+    alert("You must enter an name and ingredients!");
     return;
   }
 
-  API.saveExample(example).then(function() {
-    refreshExamples();
+  API.saveCocktail(cocktail).then(function () {
+    refreshCocktails();
   });
 
-  $exampleText.val("");
-  $exampleDescription.val("");
+  $cocktailText.val("");
+  $cocktailIngredient1.val();
+  $cocktailIngredient2.val();
+  $cocktailIngredient3.val();
+  $cocktailIngredient4.val();
+  $cocktailIngredient5.val();
+  $cocktailIngredient6.val();
 };
 
 // handleDeleteBtnClick is called when an example's delete button is clicked
 // Remove the example from the db and refresh the list
-var handleDeleteBtnClick = function() {
+var handleDeleteBtnClick = function () {
   var idToDelete = $(this)
     .parent()
     .attr("data-id");
 
-  API.deleteExample(idToDelete).then(function() {
-    refreshExamples();
+  API.deleteCocktail(idToDelete).then(function () {
+    refreshCocktails();
   });
 };
 
 // Add event listeners to the submit and delete buttons
 $submitBtn.on("click", handleFormSubmit);
-$exampleList.on("click", ".delete", handleDeleteBtnClick);
+$cocktailList.on("click", ".delete", handleDeleteBtnClick);
