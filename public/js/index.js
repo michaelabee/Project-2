@@ -5,13 +5,13 @@ var $cocktailIngredient2 = $("#cocktail-ingredient2");
 var $cocktailIngredient3 = $("#cocktail-ingredient3");
 var $cocktailIngredient4 = $("#cocktail-ingredient4");
 var $cocktailIngredient5 = $("#cocktail-ingredient5");
-var $cocktailIngredient6 = $("#cocktail-ingredient6")
+var $cocktailIngredient6 = $("#cocktail-ingredient6");
 var $submitBtn = $("#submit");
 var $cocktailList = $("#cocktail-list");
 
 // The API object contains methods for each kind of request we'll make
 var API = {
-  saveCocktail: function (example) {
+  saveCocktail: function(example) {
     return $.ajax({
       headers: {
         "Content-Type": "application/json"
@@ -21,7 +21,7 @@ var API = {
       data: JSON.stringify(example)
     });
   },
-  getCocktails: function () {
+  getCocktails: function() {
     return $.ajax({
       url: "api/cocktails",
       type: "GET"
@@ -37,9 +37,9 @@ var API = {
 };
 
 // refreshExamples gets new examples from the db and repopulates the list
-var refreshCocktails = function () {
-  API.getCocktails().then(function (data) {
-    var $cocktail = data.map(function (cocktail) {
+var refreshCocktails = function() {
+  API.getCocktails().then(function(data) {
+    var $cocktail = data.map(function(cocktail) {
       var $a = $("<a>")
         .text(cocktail.text)
         .attr("href", "/cocktail/" + cocktail.id);
@@ -61,13 +61,13 @@ var refreshCocktails = function () {
     });
 
     $cocktailList.empty();
-    $cocktailList.append($examples);
+    $cocktailList.append($cocktail);
   });
 };
 
 // handleFormSubmit is called whenever we submit a new example
 // Save the new example to the db and refresh the list
-var handleFormSubmit = function (event) {
+var handleFormSubmit = function(event) {
   event.preventDefault();
 
   var cocktail = {
@@ -85,7 +85,7 @@ var handleFormSubmit = function (event) {
     return;
   }
 
-  API.saveCocktail(cocktail).then(function () {
+  API.saveCocktail(cocktail).then(function() {
     refreshCocktails();
   });
 
@@ -100,12 +100,12 @@ var handleFormSubmit = function (event) {
 
 // handleDeleteBtnClick is called when an example's delete button is clicked
 // Remove the example from the db and refresh the list
-var handleDeleteBtnClick = function () {
+var handleDeleteBtnClick = function() {
   var idToDelete = $(this)
     .parent()
     .attr("data-id");
 
-  API.deleteCocktail(idToDelete).then(function () {
+  API.deleteCocktail(idToDelete).then(function() {
     refreshCocktails();
   });
 };
