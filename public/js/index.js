@@ -11,14 +11,14 @@ var $cocktailList = $("#cocktail-list");
 
 // The API object contains methods for each kind of request we'll make
 var API = {
-  saveCocktail: function(example) {
+  saveCocktail: function(cocktail) {
     return $.ajax({
       headers: {
         "Content-Type": "application/json"
       },
       type: "POST",
       url: "api/cocktails",
-      data: JSON.stringify(example)
+      data: JSON.stringify(cocktail)
     });
   },
   getCocktails: function() {
