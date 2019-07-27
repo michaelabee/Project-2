@@ -13,7 +13,13 @@ module.exports = function(app) {
     console.log(req.body);
     db.Cocktails.create({
       name: req.body.name,
-      ingrOne: req.body.ingredient1
+      ingrOne: req.body.ingredient1,
+      ingrTwo: req.body.ingredient2,
+      ingrThree: req.body.ingredient3,
+      ingrFour: req.body.ingredient4,
+      ingrFive: req.body.ingredient5,
+      ingrSix: req.body.ingredient6,
+      description: req.body.description
     }).then(function(dbCocktails) {
       res.json(dbCocktails);
     });
