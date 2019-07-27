@@ -13,8 +13,16 @@ module.exports = function(app) {
 
   // Load example page and pass in an example by id
   app.get("/example/:id", function(req, res) {
-    db.findOne({ where: { id: req.params.id } }).then(function(results) {
-      res.render("cocktail", {
+    db.Cocktails.findOne({ where: { id: req.params.id } }).then(function(results) {
+      res.render("example", {
+        example: results
+      });
+    });
+  });
+
+  app.get("/example", function(req, res) {
+    db.Cocktails.findAll({}).then(function(results) {
+      res.render("example", {
         example: results
       });
     });
