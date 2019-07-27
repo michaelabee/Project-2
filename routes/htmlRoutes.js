@@ -13,7 +13,9 @@ module.exports = function(app) {
 
   // Load example page and pass in an example by id
   app.get("/example/:id", function(req, res) {
-    db.Cocktails.findOne({ where: { id: req.params.id } }).then(function(results) {
+    db.Cocktails.findOne({ where: { id: req.params.id } }).then(function(
+      results
+    ) {
       res.render("example", {
         example: results
       });
