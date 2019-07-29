@@ -6,6 +6,7 @@ var $cocktailIngredient3 = $("#cocktail-ingredient3");
 var $cocktailIngredient4 = $("#cocktail-ingredient4");
 var $cocktailIngredient5 = $("#cocktail-ingredient5");
 var $cocktailIngredient6 = $("#cocktail-ingredient6");
+var $recipeSteps = $("#recipe-steps");
 var $submitBtn = $("#submit");
 var $cocktailList = $("#cocktail-list");
 
@@ -39,10 +40,28 @@ var API = {
 // refreshExamples gets new examples from the db and repopulates the list
 var refreshCocktails = function() {
   API.getCocktails().then(function(data) {
-    var $cocktail = data.map(function(cocktail) {
+    // console.log(data);
+    // var ul = $("#example-list");
+    // var a;
+
+    // $("#example-list li").each(function(j) {
+    //   if (data.length < j) {
+    //     return;
+    //   }
+    //   console.log("this", data[j].name);
+    //   // $(this).attr("<a></a>");
+    //   a = $("<a href='/example'>" + data[j].name + "</a>");
+    //   // li = $(".list-group-item").append(a);
+    //   // $(this).attr("href", "/cocktails/" + cocktail.id);
+    // });
+
+    // ul.append(a);
+    // $("#example-list").append(li);
+    var $cocktails = data.map(function(cocktail) {
+      console.log(cocktail.id);
       var $a = $("<a>")
-        .text(cocktail.text)
-        .attr("href", "/cocktail/" + cocktail.id);
+        .text(cocktail.name)
+        .attr("href", "/example/" + cocktail.id);
 
       var $li = $("<li>")
         .attr({
@@ -61,7 +80,7 @@ var refreshCocktails = function() {
     });
 
     $cocktailList.empty();
-    $cocktailList.append($cocktail);
+    $cocktailList.append($cocktails);
   });
 };
 
@@ -71,16 +90,17 @@ var handleFormSubmit = function(event) {
   event.preventDefault();
 
   var cocktail = {
-    text: $cocktailText.val(),
+    name: $cocktailText.val(),
     ingredient1: $cocktailIngredient1.val(),
     ingredient2: $cocktailIngredient2.val(),
     ingredient3: $cocktailIngredient3.val(),
     ingredient4: $cocktailIngredient4.val(),
     ingredient5: $cocktailIngredient5.val(),
-    ingredient6: $cocktailIngredient6.val()
+    ingredient6: $cocktailIngredient6.val(),
+    description: $recipeSteps.val()
   };
 
-  if (!(cocktail.text && cocktail.ingredient1)) {
+  if (!(cocktail.name && cocktail.ingredient1)) {
     alert("You must enter an name and ingredients!");
     return;
   }
@@ -113,3 +133,4 @@ var handleDeleteBtnClick = function() {
 // Add event listeners to the submit and delete buttons
 $submitBtn.on("click", handleFormSubmit);
 $cocktailList.on("click", ".delete", handleDeleteBtnClick);
+refreshCocktails();
