@@ -117,3 +117,32 @@
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="/js/index.js"></script>
+
+<script>
+  //<button class="favorite" data-id="databaseidofdrink" >
+    //<button class="unfavorite" data-id="databaseidofdrink" >
+
+      $('.favorite').click(function(){
+        //send this object 
+
+       
+        var putData = {id:$(this).data('id'), favorite:true, method:'PUT'};
+        //ajax PUT code here
+
+        ajax("/api/cocktails/favorite/", putData).then(function(res){
+          $(this).addClass("unfavorite");
+          $(this).removeClass("favorite");
+        });
+      })
+
+      
+      $('.unfavorite').click(function(){
+        //send this object
+        var putData = {id:$(this).data('id'), favorite:false, method:'PUT'};
+        //ajax PUT code here
+        ajax("/api/cocktails/favorite/", putData).then(function(res){
+          $(this).addClass("favorite");
+          $(this).removeClass("unfavorite");
+        });
+      })
+</script>
