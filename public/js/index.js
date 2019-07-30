@@ -6,6 +6,7 @@ var $cocktailIngredient3 = $("#cocktail-ingredient3");
 var $cocktailIngredient4 = $("#cocktail-ingredient4");
 var $cocktailIngredient5 = $("#cocktail-ingredient5");
 var $cocktailIngredient6 = $("#cocktail-ingredient6");
+var $recipeSteps = $("#recipe-steps");
 var $submitBtn = $("#submit");
 var $cocktailList = $("#cocktail-list");
 
@@ -107,7 +108,8 @@ var handleFormSubmit = function(event) {
     ingredient3: $cocktailIngredient3.val(),
     ingredient4: $cocktailIngredient4.val(),
     ingredient5: $cocktailIngredient5.val(),
-    ingredient6: $cocktailIngredient6.val()
+    ingredient6: $cocktailIngredient6.val(),
+    description: $recipeSteps.val()
   };
 
   if (!(cocktail.name && cocktail.ingredient1)) {
