@@ -1,5 +1,32 @@
+#home {
+  font-family: 'Roboto', sans-serif;
+}
+
+.search{
+  padding:2px;
+  margin:5px;
+  text-align:center;
+  width:100%;
+}
+
 .list-group-item {
   line-height: 2.5;
 }
 
+.card-body{
+  padding:1px;
+  margin-top:15px;
+}
+
+#cocktail-name {
+  font-weight:bold;
+  font-size: 30px;
+}
+
+#app-title {
+  font-family: 'Raleway', sans-serif;
+  text-align: center;
+  border-bottom: 1px solid black;
+  font-size: 40px;
+}
 
