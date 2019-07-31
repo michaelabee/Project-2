@@ -80,12 +80,15 @@ var refreshCocktails = function() {
         // x.setAttribute("value", "true")
 
         var button = $('<div>');
+        button.text('F')
         button.css({
           'width':'25px',
           'height':'25px',
           'display':'inline-block',
           'float':'right',
-          'background-color':'red'
+          'background-color':'red',
+          'text-align':'center',
+          'padding':'1px'
         });
         if(cocktail.favorite){
           button.addClass('unfavorite')
