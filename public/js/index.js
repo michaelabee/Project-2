@@ -12,14 +12,21 @@ var $cocktailList = $("#cocktail-list");
 
 // The API object contains methods for each kind of request we'll make
 var API = {
-  saveCocktail: function(example) {
+  searchtopic: function(topic) {
+    return $.ajax({
+      type: "GET",
+      url: "/api/cocktails/" + topic
+    });
+  },
+
+  saveCocktail: function(cocktail) {
     return $.ajax({
       headers: {
         "Content-Type": "application/json"
       },
       type: "POST",
       url: "api/cocktails",
-      data: JSON.stringify(example)
+      data: JSON.stringify(cocktail)
     });
   },
   getCocktails: function() {
@@ -57,6 +64,7 @@ var refreshCocktails = function() {
 
     // ul.append(a);
     // $("#example-list").append(li);
+    console.log(data);
     var $cocktails = data.map(function(cocktail) {
       console.log(cocktail.id);
       var $a = $("<a>")
@@ -130,6 +138,15 @@ var handleDeleteBtnClick = function() {
   });
 };
 
+var handlesearch = function() {
+  console.log("search click");
+  var topic = $("#search-bar").val();
+  console.log(topic);
+  API.searchtopic(topic).then(function(data) {
+    console.log("i am back: ", data);
+  });
+};
+
 // Add event listeners to the submit and delete buttons
 $submitBtn.on("click", handleFormSubmit);
 $cocktailList.on("click", ".delete", handleDeleteBtnClick);
@@ -142,3 +159,6 @@ $(document).ready(function() {
 $("#add-recipe").click(function() {
   $("#show-add-recipe-form").toggle();
 });
+
+$("#search").on("click", handlesearch);
+
