@@ -8,8 +8,7 @@ module.exports = function(sequelize, DataTypes) {
     ingrFive: DataTypes.STRING,
     ingrSix: DataTypes.STRING,
     description: DataTypes.TEXT,
-    alcoholic: DataTypes.BOOLEAN,
-    favorite: DataTypes.BOOLEAN
+    alcoholic: DataTypes.BOOLEAN
   });
   return Cocktails;
 };

@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "",
+    "password": "Qoslaye23",
     "database": "cocktail_db",
     "host": "localhost",
     "dialect": "mysql"

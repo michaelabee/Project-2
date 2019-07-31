@@ -2,13 +2,11 @@
   <div class="container">
     <div class="row">
       <div class="col-8 offset-2">
-        <h1 id="app-title">Toast</h1>
-        <div class="search">
-        <h2>Search for a recipe:                           <input type="text" id="search-bar"></h2>
-        </div>
-        <button class="btn btn-primary btn-lg btn-block" id="add-recipe">Add a recipe +</button>
-        <br>
-        <div id="show-add-recipe-form">
+        <h1>{{msg}}</h1>
+        <h2>Search for a recipe:</h2>
+        <p>Try searching by drink name or by ingredients</p>
+        <input type="text" id="search-bar" placeholder="Seach for a drink!">
+        <h2>Add a recipe</h2>
         <form class="clearfix mb-4" action="POST">
           <div class="form-group">
             <label for="example-text">Drink Name:</label>
@@ -94,22 +92,42 @@
                 </div>
               </div>
             </div>
+            {{!-- <div class="form-group row">
+              <label for="text5" class="col-2 col-form-label">Alcoholic:</label>
+              <div class="col-8">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">
+                      <i class="fa fa-glass"></i>
+                    </div>
+                  </div>
+                  <input id="alcoholic-alcoholic" name="text5" type="text" class="form-control">
+                </div>
+              </div>
+            </div> --}}
+
+            <div class="form-group">
+  <label for="sel1">Alcoholic-NonAlcoholic:</label>
+  <select class="form-control" id="alcoholic-alcoholic">
+    <option>true</option>
+    <option>false</option>
+  </select>
+</div>
 
           </form>
           <div class="form-group">
             <label for="example-description">Steps:</label>
-            <textarea class="form-control" id="recipe-steps" aria-describedby="example-description"
+            <textarea class="form-control" id="description" aria-describedby="example-description"
               placeholder="Enter Recipe steps"></textarea>
           </div>
-          <button id="submit" class="btn btn-primary float-right p-1">Submit</button>
+          <button id="submit" class="btn btn-primary float-right">Submit</button>
         </form>
-        </div>
-        <h2>Drinks:</h2>
+        <h3>Drinks:</h3>
         <ul id="cocktail-list" class="list-group">
           {{#each examples}}
           <li data-id="{{this.id}}" class="list-group-item">
-            <a href="example/{{this.id}}">{{this.text}}</a>      
-      <input type="checkbox" aria-label="Checkbox for following text input">
+            <a href="example/{{this.id}}">{{this.text}}</a>
+            <button class="btn btn-danger float-right delete">ｘ</button>
           </li>
           {{/each}}
         </ul>
