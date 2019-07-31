@@ -3,16 +3,11 @@
     <div class="col-8 offset-2">
       <div class="card mt-4">
         <div class="card-body">
-          <p>
-            <strong>Name</strong>: {{example.name}}</p>
-          <p>
-          <p>
-
-            <strong>Ingredients</strong>: {{example.ingrOne}}<br>{{example.ingrTwo}}<br>{{example.ingrThree}} </p>
-
-          <p>
-          <strong>Description:</strong> {{example.description}}</p>
-            <a href="/">← Back To Home</a>
+          <p id="cocktail-name">{{example.name}}</p>
+          <p> <strong>Ingredients:</strong><br>{{example.ingrOne}}<br>{{example.ingrTwo}}<br>{{example.ingrThree}}<br>
+          {{example.ingrFour}}<br>{{example.ingrFive}}<br>{{example.ingrSix}}</p>
+          <p> <strong>Steps:</strong> {{example.description}}</p>
+          <a href="/">← Back To Home</a>
         </div>
       </div>
     </div>
@@ -20,4 +15,3 @@
 </div>
 
 
-{{!-- <h1>Here in the drink list</h1> --}}
