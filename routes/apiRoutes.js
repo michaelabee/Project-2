@@ -12,7 +12,7 @@ module.exports = function(app) {
 ​
   // Create a new drink
   app.post("/api/cocktails", function(req, res) {
-    console.log(" post /api/");
+    console.log("post /api/");
     console.log(req.body);
     db.Cocktails.create({
       name: req.body.name,
