@@ -71,3 +71,11 @@ body {
   margin-bottom: 30px;
 }
 
+/* .favorite{
+  padding-left:30px; 
+} */
+
+.star {
+  font-size: 25px;
+	color:gold;
+}
