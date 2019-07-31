@@ -11,17 +11,13 @@ var $cocktailList = $("#cocktail-list");
 
 // The API object contains methods for each kind of request we'll make
 var API = {
-
-  searchtopic:  function(topic) {
-
-  return $.ajax({
+  searchtopic: function(topic) {
+    return $.ajax({
       type: "GET",
-      url: "/api/cocktails/" + topic,
-     
-    })
-  
+      url: "/api/cocktails/" + topic
+    });
   },
-  
+
   saveCocktail: function(cocktail) {
     return $.ajax({
       headers: {
@@ -49,7 +45,7 @@ var API = {
 
 // refreshExamples gets new examples from the db and repopulates the list
 var refreshCocktails = function() {
-  API.getCocktails().then(function (data) {
+  API.getCocktails().then(function(data) {
     // console.log(data);
     // var ul = $("#example-list");
     // var a;
@@ -67,8 +63,8 @@ var refreshCocktails = function() {
 
     // ul.append(a);
     // $("#example-list").append(li);
-    console.log(data)
-    var $cocktails = data.map(function (cocktail) {
+    console.log(data);
+    var $cocktails = data.map(function(cocktail) {
       console.log(cocktail.id);
       var $a = $("<a>")
         .text(cocktail.name)
@@ -115,7 +111,7 @@ var handleFormSubmit = function(event) {
     return;
   }
 
-  API.saveCocktail(cocktail).then(function () {
+  API.saveCocktail(cocktail).then(function() {
     refreshCocktails();
   });
 
@@ -135,20 +131,19 @@ var handleDeleteBtnClick = function() {
     .parent()
     .attr("data-id");
 
-  API.deleteCocktail(idToDelete).then(function () {
+  API.deleteCocktail(idToDelete).then(function() {
     refreshCocktails();
   });
 };
 
-var handlesearch = function(){
-
-    console.log("search click")
-    var topic = $("#search-bar").val();
-    console.log(topic)
+var handlesearch = function() {
+  console.log("search click");
+  var topic = $("#search-bar").val();
+  console.log(topic);
   API.searchtopic(topic).then(function(data) {
     console.log("i am back: ", data);
   });
-}
+};
 
 // Add event listeners to the submit and delete buttons
 $submitBtn.on("click", handleFormSubmit);
