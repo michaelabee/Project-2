@@ -1,26 +1,47 @@
 #home {
   font-family: 'Roboto', sans-serif;
+  /* background-image: linear-gradient(to top, #051937, #2e3b57, #556178, #808a9a, #adb4be); */
+  background-image: linear-gradient(to right top, #5cc6c3, #54d8bb, #6ae8a6, #96f587, #cdfd63);
 }
 
+/* body {
+  background-image: linear-gradient(to top, #051937, #2e3b57, #556178, #808a9a, #adb4be);
+  height: 100%;
+} */
+
 .search{
-  padding:2px;
-  margin:5px;
-  text-align:center;
+  margin-top: 15px;
+  margin-bottom: 20px;
   width:100%;
 }
 
 .list-group-item {
-  line-height: 2.5;
+  line-height: 3.5;
+  font-size: 18px;
+
+}
+
+a{
+  color:black;
+  font-size: 22;
+  font-weight: bold;
 }
 
 .card-body{
   padding:1px;
   margin-top:15px;
+  background-image: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
+}
+
+#add-recipe{
+  background-color:black;
+  color:white;
 }
 
 #cocktail-name {
   font-weight:bold;
   font-size: 30px;
+  text-align:center;
 }
 
 #app-title {

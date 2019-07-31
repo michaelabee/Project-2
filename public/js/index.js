@@ -134,3 +134,11 @@ var handleDeleteBtnClick = function() {
 $submitBtn.on("click", handleFormSubmit);
 $cocktailList.on("click", ".delete", handleDeleteBtnClick);
 refreshCocktails();
+
+$(document).ready(function() {
+  $("#show-add-recipe-form").hide();
+});
+
+$("#add-recipe").click(function() {
+  $("#show-add-recipe-form").toggle();
+});

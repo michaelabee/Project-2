@@ -5,7 +5,7 @@ module.exports = function(app) {
   app.get("/", function(req, res) {
     db.Cocktails.findAll({}).then(function(results) {
       res.render("index", {
-      examples: results
+        examples: results
       });
     });
   });
