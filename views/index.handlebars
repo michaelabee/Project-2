@@ -2,11 +2,13 @@
   <div class="container">
     <div class="row">
       <div class="col-8 offset-2">
-        <h1>{{msg}}</h1>
-        <h2>Search for a recipe:</h2>
-        <p>Try searching by drink name or by ingredients</p>
-        <input type="text" id="search-bar" placeholder="Seach for a drink!">
-        <h2>Add a recipe</h2>
+        <h1 id="app-title">Toast</h1>
+        <div class="search">
+        <h2>Search for a recipe:                           <input type="text" id="search-bar"></h2>
+        </div>
+        <button class="btn btn-primary btn-lg btn-block" id="add-recipe">Add a recipe +</button>
+        <br>
+        <div id="show-add-recipe-form">
         <form class="clearfix mb-4" action="POST">
           <div class="form-group">
             <label for="example-text">Drink Name:</label>
@@ -102,7 +104,8 @@
           </div>
           <button id="submit" class="btn btn-primary float-right p-1">Submit</button>
         </form>
-        <h3>Drinks:</h3>
+        </div>
+        <h2>Drinks:</h2>
         <ul id="cocktail-list" class="list-group">
           {{#each examples}}
           <li data-id="{{this.id}}" class="list-group-item">

@@ -5,7 +5,6 @@ module.exports = function(app) {
   app.get("/", function(req, res) {
     db.Cocktails.findAll({}).then(function(results) {
       res.render("index", {
-        msg: "Welcome to our drink app!",
         examples: results
       });
     });
