@@ -102,15 +102,15 @@
             <textarea class="form-control" id="recipe-steps" aria-describedby="example-description"
               placeholder="Enter Recipe steps"></textarea>
           </div>
-          <button id="submit" class="btn btn-primary float-right">Submit</button>
+          <button id="submit" class="btn btn-primary float-right p-1">Submit</button>
         </form>
         </div>
         <h2>Drinks:</h2>
         <ul id="cocktail-list" class="list-group">
           {{#each examples}}
           <li data-id="{{this.id}}" class="list-group-item">
-            <a href="example/{{this.id}}">{{this.text}}</a>
-            <button class="btn btn-danger float-right delete">ｘ</button>
+            <a href="example/{{this.id}}">{{this.text}}</a>      
+      <input type="checkbox" aria-label="Checkbox for following text input">
           </li>
           {{/each}}
         </ul>
