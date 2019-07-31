@@ -12,14 +12,14 @@ var $cocktailList = $("#cocktail-list");
 
 // The API object contains methods for each kind of request we'll make
 var API = {
-  searchtopic: function(topic) {
+  searchtopic: function (topic) {
     return $.ajax({
       type: "GET",
       url: "/api/cocktails/" + topic
     });
   },
 
-  saveCocktail: function(cocktail) {
+  saveCocktail: function (cocktail) {
     return $.ajax({
       headers: {
         "Content-Type": "application/json"
@@ -29,7 +29,7 @@ var API = {
       data: JSON.stringify(cocktail)
     });
   },
-  getCocktails: function() {
+  getCocktails: function () {
     return $.ajax({
       url: "api/cocktails",
       type: "GET"
@@ -45,8 +45,8 @@ var API = {
 };
 
 // refreshExamples gets new examples from the db and repopulates the list
-var refreshCocktails = function() {
-  API.getCocktails().then(function(data) {
+var refreshCocktails = function () {
+  API.getCocktails().then(function (data) {
     // console.log(data);
     // var ul = $("#example-list");
     // var a;
@@ -65,7 +65,7 @@ var refreshCocktails = function() {
     // ul.append(a);
     // $("#example-list").append(li);
     console.log(data);
-    var $cocktails = data.map(function(cocktail) {
+    var $cocktails = data.map(function (cocktail) {
       console.log(cocktail.id);
       var $a = $("<a>")
         .text(cocktail.name)
@@ -81,59 +81,59 @@ var refreshCocktails = function() {
       // var $button = $("<button>")
       //   .addClass("checkbox")
       //   .text("ｘ");
-        
-        // var x = document.createElement("INPUT");
-        // x.setAttribute("type", "checkbox");
-        // x.setAttribute("class", "favorite-button");
-        // x.setAttribute("value", "true")
 
-        var button = $('<div>');
-        button.css({
-          'width':'25px',
-          'height':'25px',
-          'display':'inline-block',
-          'float':'right',
-          'background-color':'red'
-        });
-        if(cocktail.favorite){
-          button.addClass('unfavorite')
+      // var x = document.createElement("INPUT");
+      // x.setAttribute("type", "checkbox");
+      // x.setAttribute("class", "favorite-button");
+      // x.setAttribute("value", "true")
+
+      var button = $('<div>');
+      button.css({
+        'width': '25px',
+        'height': '25px',
+        'display': 'inline-block',
+        'float': 'right',
+        'background-color': 'red'
+      });
+      if (cocktail.favorite) {
+        button.addClass('unfavorite')
+      }
+      button.click(function() {
+
+      if ($(this).hasClass('unfavorite')) {
+          //remove fav
+          var putData = { id: $(this).parent().data('id'), favorite: false };
+          console.log(putData);
+          //ajax PUT code here
+
+          $.ajax({
+            url: '/api/cocktails/favorite/',
+            type: 'PUT',
+            data: (putData),
+            success: function (data) {
+              button.removeClass("unfavorite");
+              button.css('background-color', "red");
+            }
+          });
+
+        } else {
+          //add fav
+
+          var putData = { id: $(this).parent().data('id'), favorite: true, method: 'PUT' };
+          console.log(putData);
+          //ajax PUT code here
+          $.ajax({
+            url: '/api/cocktails/favorite/',
+            type: 'PUT',
+            data: (putData),
+            success: function (data) {
+              button.addClass("unfavorite");
+              button.css('background-color', "yellow");
+            }
+          });
         }
-        button.click(function(){
 
-          if($(this).hasClass('unfavorite')){
-            //remove fav
-             var putData = {id:$(this).parent().data('id'), favorite:false};
-             console.log(putData);
-            //ajax PUT code here
-
-            $.ajax({
-              url: '/api/cocktails/favorite/',
-              type: 'PUT',
-              data: (putData),
-              success: function(data) {
-                 button.removeClass("unfavorite");
-                button.css('background-color', "red");
-              }
-            });
-             
-          }else{
-            //add fav
-
-             var putData = {id:$(this).parent().data('id'), favorite:true, method:'PUT'};
-             console.log(putData);
-            //ajax PUT code here
-            $.ajax({
-              url: '/api/cocktails/favorite/',
-              type: 'PUT',
-              data: (putData),
-              success: function(data) {
-                 button.addClass("unfavorite");
-                button.css('background-color', "yellow");
-              }
-            });
-          }
-         
-        });
+      });
 
       $li.append(button);
 
@@ -142,15 +142,15 @@ var refreshCocktails = function() {
     $cocktailList.empty();
     $cocktailList.append($cocktails);
 
-       
-      
-     
+
+
+
   });
 };
 
 // handleFormSubmit is called whenever we submit a new example
 // Save the new example to the db and refresh the list
-var handleFormSubmit = function(event) {
+var handleFormSubmit = function (event) {
   event.preventDefault();
 
   var cocktail = {
@@ -169,7 +169,7 @@ var handleFormSubmit = function(event) {
     return;
   }
 
-  API.saveCocktail(cocktail).then(function() {
+  API.saveCocktail(cocktail).then(function () {
     refreshCocktails();
   });
 
@@ -184,21 +184,21 @@ var handleFormSubmit = function(event) {
 
 // handleDeleteBtnClick is called when an example's delete button is clicked
 // Remove the example from the db and refresh the list
-var handleDeleteBtnClick = function() {
+var handleDeleteBtnClick = function () {
   var idToDelete = $(this)
     .parent()
     .attr("data-id");
 
-  API.deleteCocktail(idToDelete).then(function() {
+  API.deleteCocktail(idToDelete).then(function () {
     refreshCocktails();
   });
 };
 
-var handlesearch = function() {
+var handlesearch = function () {
   console.log("search click");
   var topic = $("#search-bar").val();
   console.log(topic);
-  API.searchtopic(topic).then(function(data) {
+  API.searchtopic(topic).then(function (data) {
     console.log("i am back: ", data);
   });
 };
@@ -208,14 +208,14 @@ $submitBtn.on("click", handleFormSubmit);
 $cocktailList.on("click", ".delete", handleDeleteBtnClick);
 refreshCocktails();
 
-  //<button class="favorite" data-id="databaseidofdrink" >
-    //<button class="unfavorite" data-id="databaseidofdrink" >
+//<button class="favorite" data-id="databaseidofdrink" >
+//<button class="unfavorite" data-id="databaseidofdrink" >
 
-$(document).ready(function() {
+$(document).ready(function () {
   $("#show-add-recipe-form").hide();
 });
 
-$("#add-recipe").click(function() {
+$("#add-recipe").click(function () {
   $("#show-add-recipe-form").toggle();
 });
 
