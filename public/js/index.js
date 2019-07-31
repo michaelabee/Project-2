@@ -87,6 +87,9 @@ var refreshCocktails = function() {
           'float':'right',
           'background-color':'red'
         });
+        if(cocktail.favorite){
+          button.addClass('unfavorite')
+        }
         button.click(function(){
 
           if($(this).hasClass('unfavorite')){
