@@ -2,6 +2,7 @@
   font-family: 'Roboto', sans-serif;
   /* background-image: linear-gradient(to top, #051937, #2e3b57, #556178, #808a9a, #adb4be); */
   background-image: linear-gradient(to right top, #5cc6c3, #54d8bb, #6ae8a6, #96f587, #cdfd63);
+  /* background-image: linear-gradient(to right top, #a7050c, #a90c11, #ac1215, #ae1719, #b01c1d, #b72424, #bf2c2c, #c63333, #d43f40, #e34b4d, #f1565b, #ff6269); */
 }
 
 /* body {
@@ -66,8 +67,7 @@ input[type=checkbox], input[type=radio] {
 }
 
 body {
-
-  background-image: url("curtain.jpg");
+  /* background-image: url("curtain.jpg"); */
   background-repeat: no-repeat;
   background-size: cover;
   height: 100%;
