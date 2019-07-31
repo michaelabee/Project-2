@@ -16,10 +16,6 @@ module.exports = function(app) {
     console.log(req.body);
     db.Cocktails.create({
       name: req.body.name,
-
-
-
-
       ingrOne: req.body.ingredient1,
       ingrTwo: req.body.ingredient2,
       ingrThree: req.body.ingredient3,
@@ -44,8 +40,8 @@ module.exports = function(app) {
 
   app.get("/api/cocktails/:topic", function(req, res) {
     console.log("app.get route search");
-    console.log(req.params.topic);
-    db.Cocktails.findAll({ where: { name: req.params.topic } }).then(function(
+    console.log(req.params.name);
+    db.Cocktails.findAll({ where: { name: req.params.name } }).then(function(
       data
     ) {
       console.log("findone: ", data);

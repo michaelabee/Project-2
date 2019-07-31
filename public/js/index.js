@@ -15,7 +15,7 @@ var API = {
   searchtopic: function(topic) {
     return $.ajax({
       type: "GET",
-      url: "/api/cocktails/" + topic
+      url: "/api/cocktails/" + name
     });
   },
 
@@ -161,4 +161,3 @@ $("#add-recipe").click(function() {
 });
 
 $("#search").on("click", handlesearch);
-
