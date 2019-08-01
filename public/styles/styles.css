@@ -62,12 +62,12 @@ input[type=checkbox], input[type=radio] {
     line-height: 1.0;
 }
 
-body {
+/* body {
 
   background-image: url("curtain.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   height: 100%;
   margin-bottom: 30px;
-}
+} */
 
