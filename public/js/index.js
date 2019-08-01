@@ -35,35 +35,11 @@ var API = {
       type: "GET"
     });
   }
-  //I COMMENTED OUT THE FUNCTION BELOW BECAUSE I DON'T THINK WE NEED TO LET USERS DELETE COCKTAILS
-  // deleteExample: function(id) {
-  //   return $.ajax({
-  //     url: "api/cocktails/" + id,
-  //     type: "DELETE"
-  //   });
-  // }
 };
 
 // refreshExamples gets new examples from the db and repopulates the list
 var refreshCocktails = function() {
   API.getCocktails().then(function(data) {
-    // console.log(data);
-    // var ul = $("#example-list");
-    // var a;
-
-    // $("#example-list li").each(function(j) {
-    //   if (data.length < j) {
-    //     return;
-    //   }
-    //   console.log("this", data[j].name);
-    //   // $(this).attr("<a></a>");
-    //   a = $("<a href='/example'>" + data[j].name + "</a>");
-    //   // li = $(".list-group-item").append(a);
-    //   // $(this).attr("href", "/cocktails/" + cocktail.id);
-    // });
-
-    // ul.append(a);
-    // $("#example-list").append(li);
     console.log(data);
     var $cocktails = data.map(function(cocktail) {
       console.log(cocktail.id);
@@ -77,15 +53,6 @@ var refreshCocktails = function() {
           "data-id": cocktail.id
         })
         .append($a);
-
-      // var $button = $("<button>")
-      //   .addClass("checkbox")
-      //   .text("ｘ");
-
-      // var x = document.createElement("INPUT");
-      // x.setAttribute("type", "checkbox");
-      // x.setAttribute("class", "favorite-button");
-      // x.setAttribute("value", "true")
 
       var button = $("<div>");
       button.css({
