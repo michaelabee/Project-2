@@ -10,7 +10,8 @@ module.exports = function (app) {
       res.json(dbCocktails);
     });
   });
-  app.post("/api/cocktails", function (req, res) {
+  // Create a new drink
+  app.post("/api/cocktails", function(req, res) {
     console.log(" post /api/");
     console.log(req.body);
     db.Cocktails.create({
@@ -23,7 +24,7 @@ module.exports = function (app) {
       ingrSix: req.body.ingredient6,
       alcoholic: req.body.alcoholic,
       description: req.body.description
-    }).then(function (dbCocktails) {
+    }).then(function(dbCocktails) {
       res.json(dbCocktails);
     });
   });
@@ -31,15 +32,18 @@ module.exports = function (app) {
   app.put("/api/cocktails/favorite/", function (req, res) {
     //logic to update database with id to favorite/unfavorite t or f
     console.log(req);
-    db.Cocktails.update({
-      favorite: req.body.favorite
-    }, {
+    db.Cocktails.update(
+      {
+        favorite: req.body.favorite
+      },
+      {
         where: {
           id: req.body.id
         }
-      }).then(function (dbCocktails) {
-        res.json(dbCocktails);
-      });
+      }
+    ).then(function(dbCocktails) {
+      res.json(dbCocktails);
+    });
   });
   // Delete an drink by id
   app.delete("/api/cocktails/:id", function (req, res) {
@@ -49,7 +53,7 @@ module.exports = function (app) {
       res.json(dbCocktails);
     });
   });
-  app.get("/api/cocktails/:topic", function (req, res) {
+  app.get("/api/cocktails/:topic", function(req, res) {
     console.log("app.get route search");
     console.log(req.params.topic);
     db.Cocktails.findAll({ where: { name: { $like: ‘%' + req.params.topic + '%’ } } }).then(function (data) {
