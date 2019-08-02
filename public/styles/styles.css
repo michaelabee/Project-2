@@ -62,11 +62,13 @@ input[type=checkbox], input[type=radio] {
     line-height: 1.0;
 }
 
-body {
-  /* background-image: url("curtain.jpg"); */
+
+body{
+  padding:1px;
+  margin-top:15px;
+  background-image: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: 100% 100%;
   height: 100%;
   margin-bottom: 30px;
 }
-
