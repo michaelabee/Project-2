@@ -70,7 +70,13 @@ input[type=checkbox], input[type=radio] {
   height: 100%;
   margin-bottom: 30px;
 } */
-
+body {
+  /* background-image: url("curtain.jpg"); */
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  margin-bottom: 30px;
+}
  .favorite{
   padding-left:30px; 
 } 
