@@ -156,12 +156,13 @@ var handleFormSubmit = function(event) {
   });
 
   $cocktailText.val("");
-  $cocktailIngredient1.val();
-  $cocktailIngredient2.val();
-  $cocktailIngredient3.val();
-  $cocktailIngredient4.val();
-  $cocktailIngredient5.val();
-  $cocktailIngredient6.val();
+  $cocktailIngredient1.val("");
+  $cocktailIngredient2.val("");
+  $cocktailIngredient3.val("");
+  $cocktailIngredient4.val("");
+  $cocktailIngredient5.val("");
+  $cocktailIngredient6.val("");
+  $recipeSteps.val("");
 };
 
 // handleDeleteBtnClick is called when an example's delete button is clicked
