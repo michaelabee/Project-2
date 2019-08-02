@@ -1,6 +1,6 @@
 #home {
   font-family: 'Roboto', sans-serif;
-  /* background-image: linear-gradient(to top, #051937, #2e3b57, #556178, #808a9a, #adb4be); */
+  background-image: linear-gradient(to top, #051937, #2e3b57, #556178, #808a9a, #adb4be);
   background-image: linear-gradient(to right top, #5cc6c3, #54d8bb, #6ae8a6, #96f587, #cdfd63);
 }
 
@@ -63,8 +63,7 @@ input[type=checkbox], input[type=radio] {
 }
 
 body {
-
-  background-image: url("curtain.jpg");
+  /* background-image: url("curtain.jpg"); */
   background-repeat: no-repeat;
   background-size: cover;
   height: 100%;
