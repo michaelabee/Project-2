@@ -11,7 +11,7 @@ module.exports = function (app) {
     });
   });
   // Create a new drink
-  app.post("/api/cocktails", function(req, res) {
+  app.post("/api/cocktails", function (req, res) {
     console.log(" post /api/");
     console.log(req.body);
     db.Cocktails.create({
@@ -24,7 +24,7 @@ module.exports = function (app) {
       ingrSix: req.body.ingredient6,
       alcoholic: req.body.alcoholic,
       description: req.body.description
-    }).then(function(dbCocktails) {
+    }).then(function (dbCocktails) {
       res.json(dbCocktails);
     });
   });
@@ -41,7 +41,7 @@ module.exports = function (app) {
           id: req.body.id
         }
       }
-    ).then(function(dbCocktails) {
+    ).then(function (dbCocktails) {
       res.json(dbCocktails);
     });
   });
@@ -53,10 +53,10 @@ module.exports = function (app) {
       res.json(dbCocktails);
     });
   });
-  app.get("/api/cocktails/:topic", function(req, res) {
+  app.get("/api/cocktails/:topic", function (req, res) {
     console.log("app.get route search");
     console.log(req.params.topic);
-    db.Cocktails.findAll({ where: { name: { $like: ‘%' + req.params.topic + '%’ } } }).then(function (data) {
+    db.Cocktails.findAll({ where: { name: { $like: ['%' + req.params.topic + '%'] } } }).then(function (data) {
       console.log("findone: ", data);
       // create object
       // res.render("page", object)
