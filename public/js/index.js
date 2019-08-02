@@ -54,6 +54,15 @@ var refreshCocktails = function() {
         })
         .append($a);
 
+      // var $button = $("<button>")
+      //   .addClass("checkbox")
+      //   .text("ｘ");
+
+      // var x = document.createElement("INPUT");
+      // x.setAttribute("type", "checkbox");
+      // x.setAttribute("class", "favorite-button");
+      // x.setAttribute("value", "true")
+
       var button = $("<div>");
       button.css({
         width: "25px",
@@ -84,6 +93,7 @@ var refreshCocktails = function() {
             success: function(data) {
               button.removeClass("unfavorite");
               button.css("background-color", "red");
+              console.log(data);
             }
           });
         } else {
@@ -105,6 +115,7 @@ var refreshCocktails = function() {
             success: function(data) {
               button.addClass("unfavorite");
               button.css("background-color", "yellow");
+              console.log(data);
             }
           });
         }
