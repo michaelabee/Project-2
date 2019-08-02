@@ -2,6 +2,7 @@
   font-family: 'Roboto', sans-serif;
   background-image: linear-gradient(to top, #051937, #2e3b57, #556178, #808a9a, #adb4be);
   background-image: linear-gradient(to right top, #5cc6c3, #54d8bb, #6ae8a6, #96f587, #cdfd63);
+  /* background-image: linear-gradient(to right top, #a7050c, #a90c11, #ac1215, #ae1719, #b01c1d, #b72424, #bf2c2c, #c63333, #d43f40, #e34b4d, #f1565b, #ff6269); */
 }
 
 /* body {
@@ -32,7 +33,10 @@ a{
   margin-top:15px;
   background-image: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
 }
-
+#search{
+  background-color: black;
+  color:white;
+}
 #add-recipe{
   background-color:black;
   color:white;
@@ -67,6 +71,5 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   height: 100%;
-  margin-bottom: 30px;
 }
 

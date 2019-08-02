@@ -15,7 +15,7 @@ var API = {
   searchtopic: function(topic) {
     return $.ajax({
       type: "GET",
-      url: "/api/cocktails/" + topic
+      url: "/api/cocktails/" + name
     });
   },
 
@@ -35,35 +35,11 @@ var API = {
       type: "GET"
     });
   }
-  //I COMMENTED OUT THE FUNCTION BELOW BECAUSE I DON'T THINK WE NEED TO LET USERS DELETE COCKTAILS
-  // deleteExample: function(id) {
-  //   return $.ajax({
-  //     url: "api/cocktails/" + id,
-  //     type: "DELETE"
-  //   });
-  // }
 };
 
 // refreshExamples gets new examples from the db and repopulates the list
 var refreshCocktails = function() {
   API.getCocktails().then(function(data) {
-    // console.log(data);
-    // var ul = $("#example-list");
-    // var a;
-
-    // $("#example-list li").each(function(j) {
-    //   if (data.length < j) {
-    //     return;
-    //   }
-    //   console.log("this", data[j].name);
-    //   // $(this).attr("<a></a>");
-    //   a = $("<a href='/example'>" + data[j].name + "</a>");
-    //   // li = $(".list-group-item").append(a);
-    //   // $(this).attr("href", "/cocktails/" + cocktail.id);
-    // });
-
-    // ul.append(a);
-    // $("#example-list").append(li);
     console.log(data);
     var $cocktails = data.map(function(cocktail) {
       console.log(cocktail.id);
@@ -180,12 +156,13 @@ var handleFormSubmit = function(event) {
   });
 
   $cocktailText.val("");
-  $cocktailIngredient1.val();
-  $cocktailIngredient2.val();
-  $cocktailIngredient3.val();
-  $cocktailIngredient4.val();
-  $cocktailIngredient5.val();
-  $cocktailIngredient6.val();
+  $cocktailIngredient1.val("");
+  $cocktailIngredient2.val("");
+  $cocktailIngredient3.val("");
+  $cocktailIngredient4.val("");
+  $cocktailIngredient5.val("");
+  $cocktailIngredient6.val("");
+  $recipeSteps.val("");
 };
 
 // handleDeleteBtnClick is called when an example's delete button is clicked
@@ -202,9 +179,9 @@ var handleDeleteBtnClick = function() {
 
 var handlesearch = function() {
   console.log("search click");
-  var topic = $("#search-bar").val();
-  console.log(topic);
-  API.searchtopic(topic).then(function(data) {
+  var name = $("#search-bar").val();
+  console.log(name);
+  API.searchtopic(name).then(function(data) {
     console.log("i am back: ", data);
   });
 };
